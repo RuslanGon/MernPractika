@@ -1,0 +1,25 @@
+.container {
+    height: 70px;
+    width: 1252px;
+    padding: 15px 15px;
+   background-color: black;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+}
+
+.link {
+    color: gold;
+    font-size: 20px;
+}
+
+.div {
+    display: flex;
+    gap: 30px;
+}
