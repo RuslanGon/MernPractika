@@ -27,7 +27,7 @@ const LoginPage = () => {
         />
       </label>
       <button type="submit" className={css.button}>Login </button>
-      <p className={css.redirect}> Already login?{' '}
+      <p className={css.redirect}> Don't have an account?
         <Link to="/register" className={css.link}> Sign Up </Link>
       </p>
     </form>
