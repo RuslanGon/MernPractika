@@ -29,7 +29,7 @@ const LoginPage = () => {
         setErrorMessage('');
         if (res.data.token) {
             localStorage.setItem('token', res.data.token);
-            window.location.reload();       // ← перезагружаем, чтобы Navbar подхватил изменение
+            window.location.reload();   
           }
       } else {
         setErrorMessage('Login failed. Try again.');
