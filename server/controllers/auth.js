@@ -55,3 +55,30 @@ export const login = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
+export const getAllUsers = async (req, res) => {
+    try {
+      const users = await UsertModel.find({}, { password: 0 });
+      return res.status(200).json({ users, message: 'get all users' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Server error" });
+    }
+  };
+
+export const deleteUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const deletedUser = await UsertModel.findByIdAndDelete(id);
+  
+      if (!deletedUser) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      return res.status(200).json({ message: "User deleted", user: deletedUser });
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      return res.status(500).json({ message: "Server error" });
+    }
+  };
