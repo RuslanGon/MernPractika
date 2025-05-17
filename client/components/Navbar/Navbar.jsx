@@ -1,20 +1,36 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../src/assets/logo.jpg";
 import css from "./Navbar.module.css";
-import { Link } from "react-router-dom";
-import {isAuthenticated} from '../../src/utils/auth.js'
 
 const Navbar = () => {
-    const isLoggedIn = isAuthenticated();
+  const isLoggedIn = !!localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();     
+  };
+
   return (
     <div className={css.container}>
-    <img className={css.logo} src={logo} alt="logo" />
-    <div className={css.div}>
-      {isLoggedIn && ( <Link className={css.link} to="/camper">Camper</Link>)}
-      <Link className={css.link} to="/login">Login</Link>
-      <Link className={css.link} to="/register">Register</Link>
+      <img className={css.logo} src={logo} alt="logo" />
+
+      <div className={css.div}>
+        {isLoggedIn && (
+          <>
+            <Link className={css.link} to="/camper">Camper</Link>
+            <button onClick={handleLogout} className={css.link}>Logout</button>
+          </>
+        )}
+        {!isLoggedIn && (
+          <>
+            <Link className={css.link} to="/login">Login</Link>
+            <Link className={css.link} to="/register">Register</Link>
+          </>
+        )}
+      </div>
     </div>
-  </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate,  } from 'react-router-dom';
 import css from './LoginPage.module.css';
 import axios from 'axios';
 
@@ -24,9 +24,13 @@ const LoginPage = () => {
 
       if (res.data.token) {
         localStorage.setItem('token', res.data.token);
+        navigate('/')
 
         setErrorMessage('');
-        navigate('/');
+        if (res.data.token) {
+            localStorage.setItem('token', res.data.token);
+            window.location.reload();       // ← перезагружаем, чтобы Navbar подхватил изменение
+          }
       } else {
         setErrorMessage('Login failed. Try again.');
       }
