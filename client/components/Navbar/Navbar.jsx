@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className={css.div}>
         {isLoggedIn && (
           <>
-            <Link className={css.link} to="/camper">Camper</Link>
+            {/* <Link className={css.link} to="/camper">Camper</Link> */}
             <button onClick={handleLogout} className={css.link}>Logout</button>
           </>
         )}
