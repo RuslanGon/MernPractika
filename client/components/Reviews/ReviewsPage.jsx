@@ -35,8 +35,6 @@ const ReviewsPage = () => {
       <button onClick={() => navigate(-1)} className={css.backLink}>
         ← Back
       </button>
-
-      <h3>Reviews</h3>
       <ul className={css.reviews}>
         {car.reviews?.map((review, idx) => (
           <li key={idx} className={css.reviewItem}>
