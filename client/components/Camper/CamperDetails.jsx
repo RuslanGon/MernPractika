@@ -76,15 +76,8 @@ const CamperDetails = () => {
           <li>Water: {car.water ? "Yes" : "No"}</li>
         </ul>
 
-        <h3>Reviews</h3>
-        <ul className={css.reviews}>
-          {car.reviews?.map((review, idx) => (
-            <li key={idx} className={css.reviewItem}>
-              <p><strong>{review.reviewer_name}</strong> — rating: {review.reviewer_rating} ⭐</p>
-              <p>{review.comment}</p>
-            </li>
-          ))}
-        </ul>
+        <Link to={`/camper/${car.id}/reviews`} className={css.reviews}>Reviews</Link>
+       
       </div>
     </div>
   );
