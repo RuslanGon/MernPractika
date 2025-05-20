@@ -1,0 +1,12 @@
+.container {
+    background-image: url(../../src/assets/main.jpg);
+    background-size: cover;         /* Масштабирует изображение, чтобы оно покрывало весь блок */
+    background-position: center;    /* Центрирует изображение */
+    background-repeat: no-repeat;   /* Не повторяет изображение */
+    width: 100%;
+    height: 100vh;                  /* Высота на весь экран */
+    display: flex;                  /* Если хочешь выравнивать содержимое */
+    justify-content: center;       /* Центр по горизонтали */
+    align-items: center;           /* Центр по вертикали */
+    color: white;                  /* Цвет текста по умолчанию, если нужен контраст */
+}

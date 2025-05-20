@@ -1,16 +1,16 @@
 .container {
-    height: 70px;
+    height: 50px;
     width: 1252px;
     padding: 15px 15px;
-   background-color: rgb(0, 107, 129);
+   background-color: rgb(61, 175, 252);
    display: flex;
    align-items: center;
    justify-content: space-between;
 }
 
 .logo {
-    height: 70px;
-    width: 70px;
+    height: 40px;
+    width: 40px;
     border-radius: 50px;
 }
 
