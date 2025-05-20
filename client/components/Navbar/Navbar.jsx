@@ -1,19 +1,28 @@
-
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../src/assets/logo.jpg";
 import css from "./Navbar.module.css";
 
-
 const Navbar = () => {
   const isLoggedIn = !!localStorage.getItem("token");
-  const navigate = useNavigate()
+  const userName = localStorage.getItem("userName") || "";
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate('/register')    
-    
+    localStorage.removeItem("userName");
+    navigate('/register');
   };
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map(word => word[0])
+      .join("")
+      .toUpperCase();
+  };
+  console.log("Username from localStorage:", userName);
+console.log("Initials:", getInitials(userName));
 
   return (
     <div className={css.container}>
@@ -22,7 +31,7 @@ const Navbar = () => {
       <div className={css.div}>
         {isLoggedIn && (
           <>
-            {/* <Link className={css.link} to="/camper">Camper</Link> */}
+            <span className={css.initials}>{getInitials(userName)}</span>
             <button onClick={handleLogout} className={css.link}>Logout</button>
           </>
         )}

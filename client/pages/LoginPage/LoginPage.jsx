@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useNavigate,  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import css from './LoginPage.module.css';
 import axios from 'axios';
 
 const LoginPage = () => {
-  const [name, setName] = useState('');    
-  const [password, setPassword] = useState('');  
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,14 +23,24 @@ const LoginPage = () => {
       );
 
       if (res.data.token) {
+        // Сохраняем токен
         localStorage.setItem('token', res.data.token);
-        navigate('/')
+
+        // Здесь важно: если сервер возвращает объект с данными пользователя,
+        // например res.data.user.name, сохраняем его в localStorage
+        // Если у тебя структура другая — скажи, посмотрим.
+        if (res.data.user && res.data.user.name) {
+          localStorage.setItem('userName', res.data.user.name);
+        } else {
+          // Если нет объекта user, можно просто сохранить введенное имя
+          localStorage.setItem('userName', name);
+        }
 
         setErrorMessage('');
-        if (res.data.token) {
-            localStorage.setItem('token', res.data.token);
-            window.location.reload();   
-          }
+        navigate('/');
+
+        // Можно убрать window.location.reload(), если навигация работает корректно
+        // window.location.reload();
       } else {
         setErrorMessage('Login failed. Try again.');
       }
@@ -58,6 +68,7 @@ const LoginPage = () => {
           name="name"
           placeholder="Enter your name"
           required
+          value={name}
         />
       </label>
 
@@ -70,6 +81,7 @@ const LoginPage = () => {
           name="password"
           placeholder="Enter your password"
           required
+          value={password}
         />
       </label>
 
