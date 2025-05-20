@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import css from "./CamperPage.module.css";
-import { ColorRing } from 'react-loader-spinner';
+
 
 
 const CamperPage = () => {
@@ -30,17 +30,7 @@ const CamperPage = () => {
     <div className={css.wrapper}>
       <h1 className={css.heading}>Rental Campers</h1>
       {loading ? (
-        <div >
-        <ColorRing
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="color-ring-loading"
-          wrapperStyle={{}}
-          wrapperClass="color-ring-wrapper"
-          colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-        />
-      </div>
+       <p className={css.loader}>Loading ...</p>
       ) : (
         <ul className={css.cardList}>
           {cars.map((car) => (
