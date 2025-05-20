@@ -7,6 +7,7 @@ const CamperDetails = () => {
   const { id } = useParams();
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(null); // индекс активного изображения
 
   useEffect(() => {
     const fetchCamper = async () => {
@@ -26,6 +27,35 @@ const CamperDetails = () => {
     fetchCamper();
   }, [id]);
 
+  const handleImageClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const handleCloseModal = () => {
+    setCurrentIndex(null);
+  };
+
+  const handleKeyDown = (e) => {
+    if (currentIndex === null) return;
+
+    if (e.key === 'Escape') {
+      handleCloseModal();
+    } else if (e.key === 'ArrowLeft') {
+      setCurrentIndex((prev) => (prev > 0 ? prev - 1 : car.gallery.length - 1));
+    } else if (e.key === 'ArrowRight') {
+      setCurrentIndex((prev) => (prev < car.gallery.length - 1 ? prev + 1 : 0));
+    }
+  };
+
+  useEffect(() => {
+    if (currentIndex !== null) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentIndex, car]);
+
   if (loading) return <p className={css.loading}>Loading...</p>;
   if (!car) return <p className={css.error}>Camper not found</p>;
 
@@ -41,6 +71,7 @@ const CamperDetails = () => {
             src={img.original}
             alt={`${car.name} ${index + 1}`}
             className={css.image}
+            onClick={() => handleImageClick(index)}
           />
         ))}
       </div>
@@ -77,8 +108,21 @@ const CamperDetails = () => {
         </ul>
 
         <Link to={`/camper/${car.id}/reviews`} className={css.reviews}>Reviews</Link>
-       
       </div>
+
+      {/* Модальное окно */}
+      {currentIndex !== null && (
+        <div className={css.modalOverlay} onClick={handleCloseModal}>
+          <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
+            <img
+              src={car.gallery[currentIndex].original}
+              alt="Full view"
+              className={css.modalImage}
+            />
+            <button onClick={handleCloseModal} className={css.closeBtn}>✕</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
