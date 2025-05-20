@@ -7,6 +7,7 @@ import CamperPage from "../pages/CamperPage/CamperPage.jsx";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import CamperDetails from "../components/Camper/CamperDetails.jsx";
 import ReviewsPage from "../components/Reviews/ReviewsPage.jsx";
+import AddCamperPage from "../pages/AddCamper/AddCamperPage.jsx";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path="/camper" element={<CamperPage />} />
         <Route path="/camper/:id" element={<CamperDetails />} />
         <Route path="/camper/:id/reviews" element={<ReviewsPage />} />
+        <Route path="/add" element={<AddCamperPage />} />
+
       </Routes>
     </>
   );

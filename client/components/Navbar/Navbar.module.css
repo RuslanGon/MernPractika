@@ -17,6 +17,7 @@
 .link {
     color: gold;
     font-size: 20px;
+    font-weight: 700;
 }
 
 .div {
@@ -31,5 +32,9 @@
     padding: 6px 10px;
     font-weight: bold;
     margin-right: 10px;
+  }
+
+  .div {
+    align-items: center;
   }
   
