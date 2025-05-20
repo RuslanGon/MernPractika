@@ -1,15 +1,18 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../src/assets/logo.jpg";
 import css from "./Navbar.module.css";
 
+
 const Navbar = () => {
   const isLoggedIn = !!localStorage.getItem("token");
+  const navigate = useNavigate()
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.reload();     
+    navigate('/register')    
+    
   };
 
   return (
