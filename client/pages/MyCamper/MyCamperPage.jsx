@@ -45,7 +45,7 @@ const MyCamperPage = () => {
                   <h2 className={css.title}>{camper.name}</h2>
                   <p className={css.price}>💰 Price: ${camper.price}</p>
                   <p>⭐ Rating: {camper.rating}</p>
-                  <p>{camper.description}</p>
+                  <p>Description:{camper.description}</p>
                   <p className={css.location}>📍 Location: {camper.location}</p>
                 </div>
               </Link>
