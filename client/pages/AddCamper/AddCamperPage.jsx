@@ -59,7 +59,7 @@ const AddCamperPage = () => {
       <div className={css.column}>
         <label className={css.field}>
           <span className={css.label}>Name</span>
-          <input className={css.input} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter camper name" required />
+          <input className={css.input} onChange={(e) => setName(e.target.value)} type="text" placeholder="Enter name" required />
         </label>
   
         <label className={css.field}>
