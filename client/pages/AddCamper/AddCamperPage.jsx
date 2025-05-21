@@ -38,7 +38,7 @@ const AddCamperPage = () => {
 
       if (response.status === 201 || response.status === 200) {
         alert("Camper added successfully!");
-        navigate('/');
+        navigate('/my');
       } else {
         alert("Failed to add camper. Please try again.");
       }

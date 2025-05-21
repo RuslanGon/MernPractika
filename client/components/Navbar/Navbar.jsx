@@ -31,9 +31,9 @@ const Navbar = () => {
       <div className={css.div}>
         {isLoggedIn && (
           <div className={css.div}>
+            <Link className={css.link} to="/my">My camper</Link>
             <Link className={css.link} to="/add">Add camper</Link>
             <Link className={css.link} to="/camper">Camper</Link>
-
             <span className={css.initials}>{getInitials(userName)}</span>
             <button onClick={handleLogout} className={css.link}>Logout</button>
             
