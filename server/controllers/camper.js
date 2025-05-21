@@ -1,0 +1,38 @@
+import CamperModel from '../models/Camper.js'
+
+export const createCamper = async (req, res) => {
+    try {
+      const camper = new CamperModel(req.body);
+      await camper.save();
+      res.status(201).json(camper);
+    } catch (error) {
+      console.error('Error adding camper:', error);
+      res.status(500).json({ error: 'Failed to add camper' });
+    }
+  }
+
+export const getAllCampers = async (req, res) => {
+    try {
+      const campers = await CamperModel.find();
+      res.status(200).json(campers);
+    } catch (error) {
+      console.error('Error fetching campers:', error);
+      res.status(500).json({ error: 'Failed to fetch campers' });
+    }
+  }  
+
+export const deleteCamper =  async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deletedCamper = await CamperModel.findByIdAndDelete(id);
+  
+      if (!deletedCamper) {
+        return res.status(404).json({ error: 'Camper not found' });
+      }
+  
+      res.status(200).json({ message: 'Camper deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting camper:', error);
+      res.status(500).json({ error: 'Failed to delete camper' });
+    }
+  } 
