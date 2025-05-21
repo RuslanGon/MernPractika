@@ -43,7 +43,7 @@ const DetailsPage = () => {
 
   const handleEdit = () => {
     navigate(`/edit/${id}`);
-  }
+  };
 
   return (
     <div className={css.container}>
@@ -55,21 +55,24 @@ const DetailsPage = () => {
       </button>
 
       <div className={css.details}>
-        {camper.image && <img src={camper.image} alt={camper.name} className={css.image} />}
+        {camper.image && (
+          <img 
+            src={`http://localhost:3001/${camper.image}`} 
+            alt={camper.name} 
+            className={css.image} 
+          />
+        )}
         <div className={css.info}>
-          <h1 className={css.title}>
-            {camper.name} 
-          
-          </h1>
+          <h1 className={css.title}>{camper.name}</h1>
           <p><strong>Price:</strong> ${camper.price}</p>
           <p><strong>Rating:</strong> ⭐ {camper.rating}</p>
           <p><strong>Location:</strong> 📍 {camper.location}</p>
           <p><strong>Description:</strong> {camper.description}</p>
         </div>
-       <div className={css.div}>
-       <FiEdit className={css.editIcon} onClick={handleEdit}  /> 
-        <FiTrash2 className={css.deleteIcon} onClick={handleDelete} />
-       </div>
+        <div className={css.div}>
+          <FiEdit className={css.editIcon} onClick={handleEdit} /> 
+          <FiTrash2 className={css.deleteIcon} onClick={handleDelete} />
+        </div>
       </div>
     </div>
   );
