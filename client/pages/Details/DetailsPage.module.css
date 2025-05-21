@@ -80,5 +80,19 @@
     background-color: #c7d2fe;
   }
   
+  .deleteIcon {
+    cursor: pointer;
+    color: #dc2626; 
+    margin-left: 12px;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+    font-size: 1.6rem;
+  }
+  
+  .deleteIcon:hover {
+    color: #b91c1c;
+  }
+  
+  
   
   

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FiTrash2 } from "react-icons/fi"; // иконка удаления
 import css from "./DetailsPage.module.css";
 
 const DetailsPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();  // <-- хук для навигации
+  const navigate = useNavigate();
   const [camper, setCamper] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -28,6 +29,17 @@ const DetailsPage = () => {
   if (loading) return <p className={css.loader}>Loading camper details...</p>;
   if (!camper) return <p className={css.error}>Camper not found.</p>;
 
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3001/campers/${id}`);
+      alert("Camper successfully deleted");
+      navigate("/my");
+    } catch (error) {
+      console.error("Error deleting camper:", error);
+      alert("Failed to delete camper");
+    }
+  };
+
   return (
     <div className={css.container}>
       <button 
@@ -40,7 +52,14 @@ const DetailsPage = () => {
       <div className={css.details}>
         {camper.image && <img src={camper.image} alt={camper.name} className={css.image} />}
         <div className={css.info}>
-          <h1 className={css.title}>{camper.name}</h1>
+          <h1 className={css.title}>
+            {camper.name} 
+            <FiTrash2 
+              className={css.deleteIcon} 
+              onClick={handleDelete} 
+              title=""
+            />
+          </h1>
           <p><strong>Price:</strong> ${camper.price}</p>
           <p><strong>Rating:</strong> ⭐ {camper.rating}</p>
           <p><strong>Location:</strong> 📍 {camper.location}</p>
