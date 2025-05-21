@@ -33,13 +33,13 @@ const MyCamperPage = () => {
         <ul className={css.cardList}>
           {campers.map((camper) => (
             <li key={camper._id} className={css.card}>
-              <Link to={`/camper/${camper._id}`} className={css.cardLink}>
+              <Link to={`/camper/details/${camper._id}`} className={css.cardLink}>
                 <div className={css.content}>
                   <h2 className={css.title}>{camper.name}</h2>
                   <p className={css.price}>Price: ${camper.price}</p>
                   <p>⭐ Rating: {camper.rating}</p>
-                  <p>{camper.description}</p>
-                  <p className={css.location}>📍 {camper.location}</p>
+                  <p>Description:{camper.description}</p>
+                  <p className={css.location}>📍Location: {camper.location}</p>
                 </div>
               </Link>
             </li>

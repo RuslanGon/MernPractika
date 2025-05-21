@@ -9,6 +9,7 @@ import CamperDetails from "../components/Camper/CamperDetails.jsx";
 import ReviewsPage from "../components/Reviews/ReviewsPage.jsx";
 import AddCamperPage from "../pages/AddCamper/AddCamperPage.jsx";
 import MyCamperPage from "../pages/MyCamper/MyCamperPage.jsx";
+import DetailsPage from "../pages/Details/DetailsPage.jsx";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path="/camper/:id/reviews" element={<ReviewsPage />} />
         <Route path="/add" element={<AddCamperPage />} />
         <Route path="/my" element={<MyCamperPage />} />
-
+        <Route path="/camper/details/:id" element={<DetailsPage />} />
 
       </Routes>
     </>

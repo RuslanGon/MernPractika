@@ -55,3 +55,16 @@ export const deleteCamper =  async (req, res) => {
       res.status(500).json({ error: 'Failed to update camper' });
     }
   };
+
+  export const getOneCamper = async (req, res) => {
+    try {
+      const camper = await CamperModel.findById(req.params.id);
+      if (!camper) {
+        return res.status(404).json({ error: "Camper not found" });
+      }
+      res.status(200).json(camper);
+    } catch (error) {
+      console.error("Error fetching camper:", error);
+      res.status(500).json({ error: "Failed to fetch camper" });
+    }
+  };

@@ -1,43 +1,51 @@
-.wrapper {
-    padding: 40px;
-    background-color: #d8d7d7;
-    min-height: 100vh;
+.heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 40px 0 20px;
+    color: #2c3e50;
   }
   
-  .heading {
-    font-size: 48px;
+  .loader {
     text-align: center;
-    margin-bottom: 40px;
-    color: #333;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 40px;
+  }
+  
+  .noResults {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #bbb;
+    margin-top: 40px;
   }
   
   .cardList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .card {
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
   }
   
   .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
   }
   
-  .image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+  .cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
   }
   
   .content {
@@ -45,42 +53,27 @@
   }
   
   .title {
-    font-size: 24px;
-    margin-bottom: 8px;
-    color: #222;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
   }
   
   .price {
-    font-weight: bold;
+    color: #27ae60;
+    font-weight: 600;
     margin-bottom: 8px;
-    color: #00b894;
   }
   
   .location {
-    font-style: italic;
-    margin-top: 10px;
-    color: #666;
-  }
-
-  .loader {
-    text-align: center;
+    color: #2980b9;
+    font-size: 0.95rem;
+    margin-top: 12px;
   }
   
-  .searchInput {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px 15px;
-    margin: 20px auto;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-  
-  .noResults {
-    text-align: center;
-    color: #999;
-    font-style: italic;
-    margin-top: 20px;
+  p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: #555;
   }
   
