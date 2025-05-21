@@ -1,15 +1,26 @@
 import CamperModel from '../models/Camper.js'
 
 export const createCamper = async (req, res) => {
-    try {
-      const camper = new CamperModel(req.body);
-      await camper.save();
-      res.status(201).json(camper);
-    } catch (error) {
-      console.error('Error adding camper:', error);
-      res.status(500).json({ error: 'Failed to add camper' });
-    }
+  try {
+    const { name, price, rating, location, description } = req.body;
+    const imagePath = req.file ? req.file.path : '';
+
+    const camper = new CamperModel({
+      name,
+      price,
+      rating,
+      location,
+      description,
+      image: imagePath,
+    });
+
+    await camper.save();
+    res.status(201).json(camper);
+  } catch (error) {
+    console.error('Error adding camper:', error);
+    res.status(500).json({ error: 'Failed to add camper' });
   }
+};
 
 export const getAllCampers = async (req, res) => {
     try {

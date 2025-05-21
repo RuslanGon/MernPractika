@@ -15,34 +15,34 @@ const AddCamperPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const token = localStorage.getItem('token');
-
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("price", price);
+      formData.append("rating", rating);
+      formData.append("location", location);
+      formData.append("description", description);
+      formData.append("image", image); // File!
+  
       const response = await axios.post(
         'http://localhost:3001/campers',
-        {
-          name,
-          price,
-          rating,
-          location,
-          description,
-          image,
-        },
+        formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
           },
         }
       );
-
+  
       if (response.status === 201 || response.status === 200) {
         alert("Camper added successfully!");
         navigate('/my');
       } else {
         alert("Failed to add camper. Please try again.");
       }
-      console.log('Camper added:', response.data);
     } catch (error) {
       console.error('Failed to add camper:', error);
       setErrorMessage('Failed to add camper. Please try again.');
@@ -86,7 +86,7 @@ const AddCamperPage = () => {
   
         <label className={css.field}>
           <span className={css.label}>Image URL</span>
-          <input className={css.input} onChange={(e) => setImage(e.target.value)} type="text" placeholder="Paste image URL" />
+          <input className={css.input}  onChange={(e) => setImage(e.target.files[0])}type="file"  accept="image/*" placeholder="Paste image URL" />
         </label>
       </div>
     </div>
