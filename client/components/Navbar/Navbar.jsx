@@ -21,8 +21,8 @@ const Navbar = () => {
       .join("")
       .toUpperCase();
   };
-  console.log("Username from localStorage:", userName);
-console.log("Initials:", getInitials(userName));
+//   console.log("Username from localStorage:", userName);
+// console.log("Initials:", getInitials(userName));
 
   return (
     <div className={css.container}>
