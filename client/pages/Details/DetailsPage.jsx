@@ -66,8 +66,10 @@ const DetailsPage = () => {
           <p><strong>Location:</strong> 📍 {camper.location}</p>
           <p><strong>Description:</strong> {camper.description}</p>
         </div>
-        <FiEdit className={css.editIcon} onClick={handleEdit}  /> 
+       <div className={css.div}>
+       <FiEdit className={css.editIcon} onClick={handleEdit}  /> 
         <FiTrash2 className={css.deleteIcon} onClick={handleDelete} />
+       </div>
       </div>
     </div>
   );
