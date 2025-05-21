@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link className={css.link} to="/add">Add camper</Link>
             <Link className={css.link} to="/camper">Camper</Link>
             <span className={css.initials}>{getInitials(userName)}</span>
-            <button onClick={handleLogout} className={css.link}>Logout</button>
+            <button className={css.link} onClick={handleLogout}>Logout</button>
             
           </div>
         )}

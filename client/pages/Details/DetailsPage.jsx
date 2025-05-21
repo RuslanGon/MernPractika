@@ -42,7 +42,7 @@ const DetailsPage = () => {
   };
 
   const handleEdit = () => {
-   navigate('/edit')
+    navigate(`/edit/${id}`);
   }
 
   return (

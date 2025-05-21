@@ -26,7 +26,7 @@ function App() {
         <Route path="/add" element={<AddCamperPage />} />
         <Route path="/my" element={<MyCamperPage />} />
         <Route path="/camper/details/:id" element={<DetailsPage />} />
-        <Route path="/edit" element={<EditPage />} />
+        <Route path="/edit/:id" element={<EditPage />} />
 
 
       </Routes>
