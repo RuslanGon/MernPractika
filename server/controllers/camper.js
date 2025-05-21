@@ -36,3 +36,22 @@ export const deleteCamper =  async (req, res) => {
       res.status(500).json({ error: 'Failed to delete camper' });
     }
   } 
+
+  export const updateCamper = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updatedCamper = await CamperModel.findByIdAndUpdate(id, req.body, {
+        new: true,
+        runValidators: true, 
+      });
+  
+      if (!updatedCamper) {
+        return res.status(404).json({ error: 'Camper not found' });
+      }
+  
+      res.status(200).json(updatedCamper);
+    } catch (error) {
+      console.error('Error updating camper:', error);
+      res.status(500).json({ error: 'Failed to update camper' });
+    }
+  };
