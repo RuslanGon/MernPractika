@@ -92,6 +92,19 @@
   .deleteIcon:hover {
     color: #b91c1c;
   }
+
+  .editIcon {
+    cursor: pointer;
+    color: blue; 
+    margin-left: 12px;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+    font-size: 1.6rem;
+  }
+
+  .editIcon:hover {
+    color: rgb(43, 43, 250);
+  }
   
   
   

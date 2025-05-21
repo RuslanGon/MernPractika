@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FiTrash2 } from "react-icons/fi"; // иконка удаления
+import { FiTrash2 } from "react-icons/fi"; 
+import { FiEdit } from "react-icons/fi";
 import css from "./DetailsPage.module.css";
 
 const DetailsPage = () => {
@@ -40,6 +41,10 @@ const DetailsPage = () => {
     }
   };
 
+  const handleEdit = () => {
+   navigate('/edit')
+  }
+
   return (
     <div className={css.container}>
       <button 
@@ -54,17 +59,15 @@ const DetailsPage = () => {
         <div className={css.info}>
           <h1 className={css.title}>
             {camper.name} 
-            <FiTrash2 
-              className={css.deleteIcon} 
-              onClick={handleDelete} 
-              title=""
-            />
+          
           </h1>
           <p><strong>Price:</strong> ${camper.price}</p>
           <p><strong>Rating:</strong> ⭐ {camper.rating}</p>
           <p><strong>Location:</strong> 📍 {camper.location}</p>
           <p><strong>Description:</strong> {camper.description}</p>
         </div>
+        <FiEdit className={css.editIcon} onClick={handleEdit}  /> 
+        <FiTrash2 className={css.deleteIcon} onClick={handleDelete} />
       </div>
     </div>
   );
